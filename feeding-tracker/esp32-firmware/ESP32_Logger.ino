@@ -32,15 +32,15 @@ void setup() {
   }
   cfg = cfgMgr.getConfig();
 
-  timeMgr.setup(cfg.timezone);
+  wifiSender.connectWiFi(cfg);
 
+  timeMgr.setup(cfg.timezone);
+  
   while (!timeMgr.isValid()) {
     delay(500);
   }
 
   sendIntervalSec = cfg.report_interval_min * 60;
-
-  wifiSender.connectWiFi(cfg);
 }
 
 void loop() {
@@ -50,10 +50,12 @@ void loop() {
   State state = fsm.update(leftPressed, rightPressed);
 
   if (fsm.eventFinished()) {
-    sdLogger.logSession(cfg,
-                        fsm.getStartTime(),
-                        fsm.getEndTime(),
-                        fsm.getEventButton());
+    sdLogger.logSession(
+        cfg,                        
+        fsm.getLastStartTime(),
+        fsm.getLastEndTime(),
+        fsm.getLastEventButton().c_str()
+    );
   }
 
   time_t now = time(nullptr);

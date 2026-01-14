@@ -1,5 +1,5 @@
 #pragma once
-#include <Arduino.h>   // ← ОБЯЗАТЕЛЬНО
+#include <Arduino.h>  
 
 class TimeManager {
 public:

@@ -1,55 +1,89 @@
 #include "ButtonStateMachine.h"
-#include <time.h>
 
 ButtonStateMachine::ButtonStateMachine() {
   currentState = IDLE;
+  activeButton = "";
   startTime = 0;
+  lastEventButton = "";
+  lastStartTime = 0;
+  lastEndTime = 0;
+  finished = false;
+  lastDebounceTime = 0;
 }
-
-// внутренние переменные
-static time_t endTime = 0;
-static const char* eventButton = nullptr;
-static bool finished = false;
 
 State ButtonStateMachine::update(bool leftPressed, bool rightPressed) {
   finished = false;
+  time_t now = time(nullptr);
+  unsigned long currentMillis = millis();
 
-  time_t now = time(nullptr);   // ← ВАЖНО
+  if (currentMillis - lastDebounceTime < debounceDelay)
+    return currentState;
+  lastDebounceTime = currentMillis;
 
   switch (currentState) {
 
     case IDLE:
       if (leftPressed) {
         startTime = now;
+        activeButton = "LEFT";
         currentState = LEFT_ACTIVE;
         Serial.println("LEFT started");
-        delay(200);
-      }
+      } 
       else if (rightPressed) {
         startTime = now;
+        activeButton = "RIGHT";
         currentState = RIGHT_ACTIVE;
         Serial.println("RIGHT started");
-        delay(200);
       }
       break;
 
     case LEFT_ACTIVE:
-      if (leftPressed || rightPressed) {
-        endTime = now;
-        eventButton = leftPressed ? "LEFT" : "RIGHT";
+      if (leftPressed && activeButton == "LEFT") {
+        lastStartTime = startTime;
+        lastEndTime   = now;
+        lastEventButton = "LEFT";
         finished = true;
+
         currentState = IDLE;
-        delay(200);
+        activeButton = "";
+        Serial.println("LEFT stopped");
+      } 
+      else if (rightPressed && activeButton == "LEFT") {
+        lastStartTime = startTime;
+        lastEndTime   = now;
+        lastEventButton = "LEFT";
+        finished = true;
+        Serial.println("LEFT stopped");
+
+        startTime = now;
+        activeButton = "RIGHT";
+        currentState = RIGHT_ACTIVE;
+        Serial.println("RIGHT started");
       }
       break;
 
     case RIGHT_ACTIVE:
-      if (leftPressed || rightPressed) {
-        endTime = now;
-        eventButton = rightPressed ? "RIGHT" : "LEFT";
+      if (rightPressed && activeButton == "RIGHT") {
+        lastStartTime = startTime;
+        lastEndTime   = now;
+        lastEventButton = "RIGHT";
         finished = true;
+
         currentState = IDLE;
-        delay(200);
+        activeButton = "";
+        Serial.println("RIGHT stopped");
+      } 
+      else if (leftPressed && activeButton == "RIGHT") {
+        lastStartTime = startTime;
+        lastEndTime   = now;
+        lastEventButton = "RIGHT";
+        finished = true;
+        Serial.println("RIGHT stopped");
+
+        startTime = now;
+        activeButton = "LEFT";
+        currentState = LEFT_ACTIVE;
+        Serial.println("LEFT started");
       }
       break;
   }
@@ -57,7 +91,7 @@ State ButtonStateMachine::update(bool leftPressed, bool rightPressed) {
   return currentState;
 }
 
-time_t ButtonStateMachine::getStartTime() { return startTime; }
-time_t ButtonStateMachine::getEndTime()   { return endTime; }
-const char* ButtonStateMachine::getEventButton() { return eventButton; }
+time_t ButtonStateMachine::getLastStartTime() { return lastStartTime; }
+time_t ButtonStateMachine::getLastEndTime()   { return lastEndTime; }
+String ButtonStateMachine::getLastEventButton() { return lastEventButton; }
 bool ButtonStateMachine::eventFinished() { return finished; }

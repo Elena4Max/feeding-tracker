@@ -9,7 +9,7 @@ class SDLogger {
 public:
   void init(const Config& cfg, TimeManager& tm);
   void logSession(const Config& cfg, time_t startT, time_t endT,
-                  const char* breast);
+                  String breast);
   void clearLogs(const Config& cfg);
 
 private:

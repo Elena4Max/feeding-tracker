@@ -29,7 +29,7 @@ String SDLogger::formatTime(time_t t) {
 }
 
 void SDLogger::logSession(const Config& cfg, time_t startT, time_t endT,
-                          const char* breast) {
+                          String breast) {
   File f = SD.open(logFile, FILE_APPEND);
   if (!f) return;
 

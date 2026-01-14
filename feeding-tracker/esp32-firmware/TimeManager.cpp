@@ -17,8 +17,7 @@ bool TimeManager::setup(const String& timezone) {
 }
 
 bool TimeManager::isValid() {
-  time_t now;
-  time(&now);
+  time_t now = time(nullptr);
   return now > 1600000000;
 }
 
