@@ -1,0 +1,11 @@
+# Игнорировать конфиги ESP32
+esp32-firmware/config/config.h
+
+# Игнорировать .env бэкенда
+backend/.env
+
+# IDE, временные файлы
+*.swp
+*.DS_Store
+*.vscode/
+
