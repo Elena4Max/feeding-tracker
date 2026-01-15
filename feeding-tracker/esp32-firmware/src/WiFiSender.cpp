@@ -1,10 +1,10 @@
-#include "WiFiSender.h"
+#include "../include/WiFiSender.h"
 
 #include <WiFi.h>
 #include <ESP_Mail_Client.h>
 #include <SD.h>
 
-#include "config.h"
+#include "../config/config.h"
 
 bool WiFiSender::connectWiFi(const Config& cfg) {
 

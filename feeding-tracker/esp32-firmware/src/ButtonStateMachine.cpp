@@ -1,4 +1,4 @@
-#include "ButtonStateMachine.h"
+#include "../include/ButtonStateMachine.h"
 
 ButtonStateMachine::ButtonStateMachine() {
   currentState = IDLE;

@@ -1,0 +1,17 @@
+# ===== ESP32 / Arduino =====
+
+esp32-firmware/config/config_secret.h
+
+*.bin
+*.elf
+*.hex
+
+.build/
+.cache/
+arduino_build_*
+arduino_cache_*
+
+.vscode/
+.idea/
+*.swp
+.DS_Store

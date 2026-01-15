@@ -1,5 +1,5 @@
-#include "SDLogger.h"
-#include "config.h" 
+#include "../include/SDLogger.h"
+#include "../config/config.h" 
 
 void SDLogger::init(const Config& cfg, TimeManager& tm) {
   timeMgr = &tm;

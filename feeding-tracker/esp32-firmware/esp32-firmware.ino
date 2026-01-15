@@ -1,11 +1,11 @@
 #include <Arduino.h>
 
-#include "config.h"
-#include "ConfigManager.h"
-#include "ButtonStateMachine.h"
-#include "SDLogger.h"
-#include "WiFiSender.h"
-#include "TimeManager.h"
+#include "config/config.h"
+#include "include/ConfigManager.h"
+#include "include/ButtonStateMachine.h"
+#include "include/SDLogger.h"
+#include "include/WiFiSender.h"
+#include "include/TimeManager.h"
 
 ConfigManager cfgMgr;
 Config cfg;
