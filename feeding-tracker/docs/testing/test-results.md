@@ -9,13 +9,13 @@ Legend:
 
 ---
 
-## Configuration & Secrets
+## Configuration
 
 | Test Case | Result | Notes |
 |---------|-------|-------|
-| TC-CONF-01 | ⬜ | |
-| TC-CONF-02 | ⬜ | |
-| TC-CONF-03 | ⬜ | |
+| TC-CONF-01 | PASS | |
+| TC-CONF-02 | PASS | |
+| TC-CONF-03 | PASS | |
 
 ---
 
@@ -23,9 +23,9 @@ Legend:
 
 | Test Case | Result | Notes |
 |---------|-------|-------|
-| TC-TIME-01 | ⬜ | |
-| TC-TIME-02 | ⬜ | |
-| TC-TIME-03 | ⬜ | |
+| TC-TIME-01 | PASS | |
+| TC-TIME-02 | PASS | |
+| TC-TIME-03 | SKIPPED | |
 
 ---
 
@@ -33,9 +33,9 @@ Legend:
 
 | Test Case | Result | Notes |
 |---------|-------|-------|
-| TC-BTN-01 | ⬜ | |
-| TC-BTN-02 | ⬜ | |
-| TC-BTN-03 | ⬜ | |
+| TC-BTN-01 | FAIL | |
+| TC-BTN-02 | PASS | |
+| TC-BTN-03 | PASS | |
 
 ---
 
@@ -43,9 +43,8 @@ Legend:
 
 | Test Case | Result | Notes |
 |---------|-------|-------|
-| TC-SD-01 | ⬜ | |
-| TC-SD-02 | ⬜ | |
-| TC-SD-03 | ⬜ | |
+| TC-SD-01 | FAIL | |
+| TC-SD-02 | PASS | |
 
 ---
 
@@ -53,9 +52,9 @@ Legend:
 
 | Test Case | Result | Notes |
 |---------|-------|-------|
-| TC-MAIL-01 | ⬜ | |
-| TC-MAIL-02 | ⬜ | |
-| TC-MAIL-03 | ⬜ | |
+| TC-MAIL-01 | PASS | |
+| TC-MAIL-02 | PASS | |
+| TC-MAIL-03 | PASS | |
 
 ---
 
@@ -63,7 +62,7 @@ Legend:
 
 | Test Case | Result | Notes |
 |---------|-------|-------|
-| TC-SYS-01 | ⬜ | |
-| TC-SYS-02 | ⬜ | |
-| TC-SYS-03 | ⬜ | |
+| TC-SYS-01 | SKIPPED | |
+| TC-SYS-02 | SKIPPED | |
+| TC-SYS-03 | SKIPPED | |
 

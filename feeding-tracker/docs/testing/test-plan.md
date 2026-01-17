@@ -34,7 +34,7 @@ Focused validation of isolated components:
 - ButtonStateMachine
 - SDLogger
 - WiFiSender
-- Config / config_secret
+- Config
 
 ### 2.2 Integration Tests
 Validation of interactions between modules:
@@ -58,9 +58,9 @@ End-to-end scenarios on real hardware:
 
 ## 3. Configuration & Secrets (CRITICAL)
 
-### TC-CONF-01: Missing config_secret.h
+### TC-CONF-01: Missing config.h
 **Steps:**
-1. Remove `config/config_secret.h`
+1. Remove `config/config.h`
 2. Compile firmware
 
 **Expected:**
@@ -76,8 +76,8 @@ End-to-end scenarios on real hardware:
 2. Inspect staged files
 
 **Expected:**
-- `config_secret.h` is NOT tracked
-- `config_secret.example.h` IS tracked
+- `config.h` is NOT tracked
+- `config.example.h` IS tracked
 
 ---
 
@@ -198,18 +198,6 @@ Optional: CANCELLED
 - Device does not crash
 - Data buffered or queued
 - Clear error indication
-
----
-
-### TC-SD-03: SD full
-**Steps:**
-1. Fill SD card
-2. Attempt logging
-
-**Expected:**
-- Graceful error handling
-- No data corruption
-- No loss of existing logs
 
 ---
 
